@@ -1,37 +1,18 @@
 <template>
   <NavBarComponent/>
+  <router-view></router-view>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 
-import { useStore } from 'vuex';
-
-import NavBarComponent from '@/components/NavBarComponent.vue';
+import NavBarComponent from '@/components/ui/NavBarComponent.vue';
 
 export default defineComponent({
   name: 'App',
 
-  data: () => ({
-    store: null,
-    products: {
-      type: Array,
-    },
-  }),
-
   components: {
     NavBarComponent,
-  },
-
-  created() {
-    this.store = useStore();
-    this.store.dispatch('getImages');
-  },
-
-  computed: {
-    allProducts() {
-      return this.store.state.products;
-    },
   },
 });
 </script>
@@ -50,8 +31,7 @@ export default defineComponent({
 }
 
 :root {
-  --dark: rgb(4,4,4);
-  --primary: #121314;
+  --dark: #121314;
   --light: rgb(255,255,255);
 }
 </style>

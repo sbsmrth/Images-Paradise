@@ -6,13 +6,13 @@
       </button>
       <ul class="nav__items">
         <li class="nav__item">
-          <a href="#" class="nav__link">Home</a>
+          <a href="#main" class="nav__link">Home</a>
         </li>
         <li class="nav__item">
           <a href="#" class="nav__link">Images</a>
         </li>
         <li class="nav__item">
-          <a href="#" class="nav__link">Other</a>
+          <a href="#images" class="nav__link">Other</a>
         </li>
       </ul>
     </nav>
@@ -25,25 +25,49 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'NavBarComponent',
 
+  created() {
+    window.addEventListener('scroll', this.changeBg);
+  },
+
+  unmounted() {
+    window.removeEventListener('scroll', this.changeBg);
+  },
+
   methods: {
     toggle() {
       const navItems = document.querySelector('.nav__items');
 
       navItems.classList.toggle('nav__items--active');
     },
+
+    changeBg() {
+      const nav = document.querySelector('.nav');
+
+      if (window.scrollY > 70) {
+        nav.classList.add('nav--dark');
+      } else {
+        nav.classList.remove('nav--dark');
+      }
+    },
   },
 });
 </script>
 
-<style>
+<style scoped>
   .nav {
     width: 100%;
-    background: var(--dark);
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 11vh;
+    height: 10vh;
+    padding: 30px 0;
+    z-index: 1;
+  }
+
+  .nav--dark {
+    background: var(--dark);
+    transition: .3s;
   }
 
   .nav .nav__icon-container {
@@ -52,6 +76,7 @@ export default defineComponent({
 
   .nav .nav__items {
     display: flex;
+    list-style: none;
   }
 
   .nav .nav__items .nav__item {
@@ -61,14 +86,16 @@ export default defineComponent({
   .nav__items .nav__item .nav__link {
     color: var(--light);
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
     letter-spacing: 2px;
+    font-weight: bolder;
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: 768px) {
     .nav {
       justify-content: flex-start;
-      height: 10vh;
+      background: var(--dark);
+      height: 8vh;
     }
 
     .nav .nav__icon-container {
@@ -89,7 +116,7 @@ export default defineComponent({
       position: fixed;
       top: -100vh;
       width: 100%;
-      height: calc(100% - 10vh);
+      height: calc(100% - 8vh);
       background: inherit;
     }
 
@@ -98,7 +125,7 @@ export default defineComponent({
     }
 
     .nav .nav__items--active {
-      top: 10vh;
+      top: 8vh;
       transition: top .3s;
     }
   }

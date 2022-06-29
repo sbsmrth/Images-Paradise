@@ -2,19 +2,23 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    products: [],
+    images: [],
   },
   getters: {
   },
   mutations: {
     setImages(state, payload) {
-      state.products = payload;
+      state.images = payload;
     },
   },
   actions: {
     async getImages({ commit }) {
       try {
-        const ans = await fetch('https://api.unsplash.com/photos/?client_id=bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY');
+        const ans = await fetch('https://api.unsplash.com/photos?per_page=30&order_by=popular', {
+          headers: {
+            Authorization: 'Client-ID bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY',
+          },
+        });
         const images = await ans.json();
 
         commit('setImages', images);
