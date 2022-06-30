@@ -2,7 +2,7 @@
     <section class="main__img-container" id="main">
       <article class="main__info">
         <p class="main__title">
-          <i>Find the most awesome and beautiful collection
+          <i>Find the most awesome and beautiful collections
           of professional photos.</i>
         </p>
         <blockquote class="main__quote">

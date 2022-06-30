@@ -17,7 +17,7 @@ export default defineComponent({
     const store = useStore();
 
     onMounted(() => {
-      store.dispatch('getImages');
+      store.dispatch('getRandom');
     });
 
     const images = computed(() => store.state.images);
@@ -37,7 +37,7 @@ export default defineComponent({
   .text {
     text-align: center;
     color: var(--light);
-    margin-top: 40px;
+    margin-top: 50px;
     font-size: 1.3em;
     letter-spacing: 1px;
     font-weight: bold;

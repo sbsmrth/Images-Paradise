@@ -6,17 +6,29 @@
       class="images__img"
     />
     <div class="images__content">
-      <div class="images__icon">
+      <div class="images__user images__main" v-if="img.user.username">
+        <i class="fa-solid fa-user"></i>
+        <p>{{ img.user.username }}</p>
+      </div>
+      <div class="images__icon images__main" v-if="img.likes">
         <i class="fa-solid fa-heart"></i>
         <p>{{ img.likes }}</p>
       </div>
-      <div class="images__tw" v-if="img.user.twitter_username">
+      <div class="images__tw images__main" v-if="img.user.twitter_username">
         <i class="fa-brands fa-twitter"></i>
         <p>{{ img.user.twitter_username }}</p>
       </div>
-      <div class="images__portfolio" v-if="img.user.portfolio_url">
+      <div class="images__portfolio images__main" v-if="img.user.portfolio_url">
         <i class="fa-solid fa-paper-plane fa-sm"></i>
         <a :href="img.user.portfolio_url" target="__blank">Portfolio</a>
+      </div>
+      <div class="images__ig" v-if="img.user.instagram_username">
+        <i class="fa-brands fa-instagram"></i>
+        <p>{{img.user.instagram_username}}</p>
+      </div>
+      <div class="images__download images__main">
+        <i class="fa-solid fa-up-right-from-square fa-sm"></i>
+        <a :href="img.links.download" target="__blank">DL</a>
       </div>
     </div>
   </article>
@@ -51,6 +63,7 @@ export default defineComponent({
     justify-content: space-around;
     padding: 0 10px;
     margin-top: 7px;
+    flex-wrap: wrap;
   }
 
   .images .images__col .images__content i {
@@ -63,7 +76,11 @@ export default defineComponent({
     color: var(--light);
   }
 
-  .images__content .images__portfolio a {
+  .images__content a {
     text-decoration: none;
+  }
+
+  .images__content .images__main {
+    margin: 3px 8px;
   }
 </style>
