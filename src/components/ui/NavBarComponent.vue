@@ -9,10 +9,10 @@
           <router-link to="/" class="nav__link">Home</router-link>
         </li>
         <li class="nav__item">
-          <a href="#" class="nav__link">Images</a>
+          <router-link :to="{name:'popular'}" class="nav__link">Popular</router-link>
         </li>
         <li class="nav__item">
-          <a href="#images" class="nav__link">Other</a>
+          <router-link :to="{name:'latest'}" class="nav__link">Latest</router-link>
         </li>
       </ul>
       <form class="nav__search" role="search">
@@ -132,6 +132,7 @@ export default defineComponent({
     border: none;
     outline: none;
     padding-left: 6px;
+    width: 100px;
   }
 
   .nav .nav__search .nav__button .nav__icon {
@@ -185,6 +186,11 @@ export default defineComponent({
     .nav .nav__search .nav__input {
       width: 120px;
       height: 20px;
+    }
+  }
+  @media (min-width: 992px) {
+    .nav .nav__search .nav__input {
+      width: 160px;
     }
   }
 </style>

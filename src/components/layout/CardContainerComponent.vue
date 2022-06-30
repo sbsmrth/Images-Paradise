@@ -38,7 +38,7 @@ export default defineComponent({
   @media (max-width: 768px) {
     .images {
       grid-template-columns: 1fr;
-      row-gap: 30px;
+      row-gap: 70px;
       width: 93vw;
     }
   }

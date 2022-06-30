@@ -12,6 +12,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'search',
     component: () => import(/* webpackChunkName: "search" */ '@/views/SearchView.vue'),
   },
+  {
+    path: '/popular',
+    name: 'popular',
+    component: () => import(/* webpackChunkName: "popular" */ '@/views/PopularView.vue'),
+  },
+  {
+    path: '/latest',
+    name: 'latest',
+    component: () => import(/* webpackChunkName: "latest" */ '@/views/LatestView.vue'),
+  },
 ];
 
 const router = createRouter({

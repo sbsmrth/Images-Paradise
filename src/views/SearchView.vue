@@ -1,7 +1,7 @@
 <template>
   <CardContainerComponent v-if="imagesQ.length != 0" :images="imagesQ" class="card"/>
   <div v-else class="error">
-    <img src="../assets/404.png" alt="" class="error__img">
+    <img src="../assets/404.png" alt="error 404 no result found" class="error__img">
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
-    const imagesQ = computed(() => store.state.query);
+    const imagesQ = computed(() => store.state.images);
 
     return { imagesQ };
   },
