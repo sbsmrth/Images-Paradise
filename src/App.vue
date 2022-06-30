@@ -34,4 +34,8 @@ export default defineComponent({
   --dark: #121314;
   --light: rgb(255,255,255);
 }
+
+body {
+  background: var(--dark);
+}
 </style>

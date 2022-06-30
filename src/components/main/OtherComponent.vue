@@ -1,4 +1,5 @@
 <template>
+  <p class="text">Some random photos..</p>
   <CardContainerComponent :images="images"/>
 </template>
 
@@ -31,3 +32,14 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+  .text {
+    text-align: center;
+    color: var(--light);
+    margin-top: 40px;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+</style>

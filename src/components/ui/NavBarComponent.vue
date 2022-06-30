@@ -6,7 +6,7 @@
       </button>
       <ul class="nav__items">
         <li class="nav__item">
-          <a href="#main" class="nav__link">Home</a>
+          <router-link to="/" class="nav__link">Home</router-link>
         </li>
         <li class="nav__item">
           <a href="#" class="nav__link">Images</a>
@@ -15,23 +15,40 @@
           <a href="#images" class="nav__link">Other</a>
         </li>
       </ul>
+      <form class="nav__search" role="search">
+        <label for="q">
+          <input type="text" id="q" class="nav__input" v-model="q" autocomplete="off">
+        </label>
+        <router-link :to="{name:'search'}">
+          <button class="nav__button" @click="send">
+            <i class="fa-solid fa-magnifying-glass fa-lg nav__icon"></i>
+          </button>
+        </router-link>
+      </form>
     </nav>
   </header>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'NavBarComponent',
 
   created() {
+    this.store = useStore();
     window.addEventListener('scroll', this.changeBg);
   },
 
   unmounted() {
     window.removeEventListener('scroll', this.changeBg);
   },
+
+  data: () => ({
+    store: null,
+    q: '',
+  }),
 
   methods: {
     toggle() {
@@ -49,6 +66,11 @@ export default defineComponent({
         nav.classList.remove('nav--dark');
       }
     },
+
+    send() {
+      this.store.dispatch('getQueryImages', this.q);
+      this.q = '';
+    },
   },
 });
 </script>
@@ -58,6 +80,7 @@ export default defineComponent({
     width: 100%;
     position: fixed;
     display: flex;
+    top: 0;
     justify-content: center;
     align-items: center;
     height: 10vh;
@@ -66,7 +89,7 @@ export default defineComponent({
   }
 
   .nav--dark {
-    background: var(--dark);
+    background: rgb(4,4,4);
     transition: .3s;
   }
 
@@ -89,6 +112,31 @@ export default defineComponent({
     font-size: 1.3em;
     letter-spacing: 2px;
     font-weight: bolder;
+  }
+
+  .nav .nav__search {
+    position: absolute;
+    right: 30px;
+  }
+
+  .nav .nav__search .nav__button {
+    border: none;
+    background: none;
+    margin-left: 8px;
+    outline: none;
+  }
+
+  .nav .nav__search .nav__input {
+    border-radius: 10px;
+    height: 19px;
+    border: none;
+    outline: none;
+    padding-left: 6px;
+  }
+
+  .nav .nav__search .nav__button .nav__icon {
+    cursor: pointer;
+    color: var(--light);
   }
 
   @media (max-width: 768px) {
@@ -127,6 +175,16 @@ export default defineComponent({
     .nav .nav__items--active {
       top: 8vh;
       transition: top .3s;
+    }
+
+    .nav .nav__search {
+      position: absolute;
+      right: 20px;
+    }
+
+    .nav .nav__search .nav__input {
+      width: 120px;
+      height: 20px;
     }
   }
 </style>

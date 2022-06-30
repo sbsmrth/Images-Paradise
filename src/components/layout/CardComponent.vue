@@ -54,22 +54,16 @@ export default defineComponent({
   }
 
   .images .images__col .images__content i {
-    color: var(--dark);
+    color: var(--light)
   }
 
   .images .images__col .images__content p, a {
     display: inline-block;
     margin-left: 8px;
-    color: var(--dark);
+    color: var(--light);
   }
 
   .images__content .images__portfolio a {
     text-decoration: none;
-  }
-
-  @media (max-width: 768px) {
-    .images .images__col .images__content p, a {
-      margin-left: 3px;
-    }
   }
 </style>

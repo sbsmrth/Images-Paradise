@@ -3,18 +3,21 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     images: [],
-  },
-  getters: {
+    query: [],
   },
   mutations: {
     setImages(state, payload) {
       state.images = payload;
     },
+
+    setQueryImages(state, payload) {
+      state.query = payload;
+    },
   },
   actions: {
     async getImages({ commit }) {
       try {
-        const ans = await fetch('https://api.unsplash.com/photos?per_page=30&order_by=popular', {
+        const ans = await fetch('https://api.unsplash.com/photos/random?count=30', {
           headers: {
             Authorization: 'Client-ID bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY',
           },
@@ -26,7 +29,14 @@ export default createStore({
         console.log(err);
       }
     },
-  },
-  modules: {
+    async getQueryImages({ commit }, q) {
+      try {
+        const ans = await fetch(`https://api.unsplash.com/search/photos?per_page=30&query=${q}&client_id=bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY`);
+        const queryImages = await ans.json();
+        commit('setQueryImages', queryImages.results);
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 });
