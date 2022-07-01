@@ -22,7 +22,7 @@ export default defineComponent({
 
 <style scoped>
   .main__img-container  {
-    background: url('@/assets/main_bg.jpg') top 41% left fixed no-repeat;
+    background: url('@/assets/main_background.jpg') center left 41% fixed no-repeat;
     height: 100vh;
     width: 100%;
     display: flex;
@@ -37,7 +37,7 @@ export default defineComponent({
   }
 
   .main__info .main__title {
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 
   .main__info .main__quote {
@@ -61,7 +61,11 @@ export default defineComponent({
   }
   @media (max-width: 768px) {
     .main__img-container  {
-      background: url('@/assets/main_bg.jpg') top 39% left 12% fixed no-repeat;
+      background: url('@/assets/main_background.jpg') center left 30% fixed no-repeat;
+    }
+
+    .main__img-container .main__info {
+      width: 270px;
     }
   }
 </style>
