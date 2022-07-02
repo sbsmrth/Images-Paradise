@@ -17,11 +17,12 @@
       </ul>
       <form class="nav__search" role="search">
         <label for="q">
-          <input type="text" id="q" class="nav__input" v-model="q" autocomplete="off">
+          <input type="text" id="q" class="nav__input" v-model="q" autocomplete="off"
+          placeholder="Search an image..">
         </label>
         <router-link :to="{name:'search'}">
           <button class="nav__button" @click="send">
-            <i class="fa-solid fa-magnifying-glass fa-lg nav__icon"></i>
+            <i class="fa-solid fa-magnifying-glass nav__icon"></i>
           </button>
         </router-link>
       </form>
@@ -109,33 +110,46 @@ export default defineComponent({
   .nav__items .nav__item .nav__link {
     color: var(--light);
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.4em;
     letter-spacing: 2px;
     font-weight: bolder;
   }
 
   .nav .nav__search {
     position: absolute;
-    right: 30px;
+    right: 12px;
+    border-radius: 20px;
+    height: 24px;
+    display: flex;
+    background: none;
+    border: 1px solid var(--light);
+    justify-content: space-between;
+    padding: 11px 8px;
+    align-items: center;
+  }
+
+  .nav .nav__search .nav__input {
+    border: none;
+    outline: none;
+    width: 0px;
+    background: none;
+    transition: .3s;
+    color: var(--light);
+  }
+
+  .nav .nav__search:hover .nav__input {
+    width: 110px;
+    margin-right: 9px;
+    transition: .4s;
   }
 
   .nav .nav__search .nav__button {
     border: none;
+    outline: none;
     background: none;
-    margin-left: 8px;
-    outline: none;
   }
 
-  .nav .nav__search .nav__input {
-    border-radius: 10px;
-    height: 19px;
-    border: none;
-    outline: none;
-    padding-left: 6px;
-    width: 100px;
-  }
-
-  .nav .nav__search .nav__button .nav__icon {
+  .nav__search .nav__button .nav__icon {
     cursor: pointer;
     color: var(--light);
   }
@@ -178,19 +192,24 @@ export default defineComponent({
       transition: top .3s;
     }
 
-    .nav .nav__search {
-      position: absolute;
-      right: 20px;
+    .nav .nav__search:hover .nav__input {
+      width: 110px;
+      padding-left: 2px;
     }
 
-    .nav .nav__search .nav__input {
-      width: 120px;
-      height: 20px;
+    .nav .nav__search {
+      padding: 11px 13px;
     }
   }
   @media (min-width: 992px) {
-    .nav .nav__search .nav__input {
+    .nav .nav__search:hover .nav__input {
       width: 160px;
+      padding-left: 8px;
+    }
+
+    .nav .nav__search {
+      right: 30px;
+      height: 27px;
     }
   }
 </style>

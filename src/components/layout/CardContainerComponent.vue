@@ -1,6 +1,6 @@
 <template>
   <section class="images" id="images">
-    <CardComponent v-for="img of images" :key="img.id" :img="img"/>
+    <CardComponent v-for="(img, index) of images" :key="index" :img="img"/>
   </section>
 </template>
 
@@ -32,7 +32,7 @@ export default defineComponent({
     grid-auto-rows: 400px;
     width: 95vw;
     margin: 50px auto;
-    gap: 50px 30px;
+    gap: 80px 30px;
   }
 
   @media (max-width: 768px) {
@@ -40,6 +40,12 @@ export default defineComponent({
       grid-template-columns: 1fr;
       row-gap: 70px;
       width: 93vw;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .images {
+      row-gap: 50px;
     }
   }
 </style>
