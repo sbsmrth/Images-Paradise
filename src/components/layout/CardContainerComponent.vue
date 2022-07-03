@@ -1,6 +1,6 @@
 <template>
   <section class="images" id="images">
-    <CardComponent v-for="(img, index) of images" :key="index" :img="img"/>
+    <CardComponent v-for="(img, index) of images" :key="index" :img="img" data-test="card" />
   </section>
 </template>
 

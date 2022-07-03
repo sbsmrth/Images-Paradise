@@ -143,6 +143,10 @@ export default defineComponent({
     transition: .4s;
   }
 
+  .nav .nav__search .nav__input::placeholder {
+    color: #edeef0;
+  }
+
   .nav .nav__search .nav__button {
     border: none;
     outline: none;
@@ -210,6 +214,7 @@ export default defineComponent({
     .nav .nav__search {
       right: 30px;
       height: 27px;
+      padding: 14px 10px;
     }
   }
 </style>
