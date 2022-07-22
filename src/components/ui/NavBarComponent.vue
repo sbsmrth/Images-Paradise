@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="nav">
+    <nav class="nav" :class="{'nav--dark':setBlack}">
       <button class="nav__icon-container" @click="toggle">
         <i class="fa-solid fa-bars fa-lg nav__icon"></i>
       </button>
@@ -49,6 +49,7 @@ export default defineComponent({
   data: () => ({
     store: null,
     q: '',
+    scroll: 0,
   }),
 
   methods: {
@@ -59,18 +60,18 @@ export default defineComponent({
     },
 
     changeBg() {
-      const nav = document.querySelector('.nav');
-
-      if (window.scrollY > 70) {
-        nav.classList.add('nav--dark');
-      } else {
-        nav.classList.remove('nav--dark');
-      }
+      this.scroll = window.scrollY;
     },
 
     send() {
       this.store.dispatch('getQueryImages', this.q);
       this.q = '';
+    },
+  },
+
+  computed: {
+    setBlack() {
+      return this.scroll > 70;
     },
   },
 });
