@@ -4,7 +4,7 @@
       <button class="nav__icon-container" @click="toggle">
         <i class="fa-solid fa-bars fa-lg nav__icon"></i>
       </button>
-      <ul class="nav__items">
+      <ul class="nav__items" :class="{'nav__items--active':openMenu}">
         <li class="nav__item">
           <router-link to="/" class="nav__link">Home</router-link>
         </li>
@@ -50,13 +50,12 @@ export default defineComponent({
     store: null,
     q: '',
     scroll: 0,
+    openMenu: false,
   }),
 
   methods: {
     toggle() {
-      const navItems = document.querySelector('.nav__items');
-
-      navItems.classList.toggle('nav__items--active');
+      this.openMenu = !this.openMenu;
     },
 
     changeBg() {
