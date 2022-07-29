@@ -1,29 +1,15 @@
-# images_paradise
+# Images Paradise
 
-## Project setup
-```
-npm install
-```
+<p align="center">
+  <img src="https://i.imgur.com/FRd8oNj.png">
+</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![last-commit](https://img.shields.io/github/last-commit/sbsmrth/Images-Paradise?style=for-the-badge) ![tech](https://img.shields.io/badge/MADE_WITH-VUE-success?style=for-the-badge) ![lang](https://img.shields.io/github/languages/count/sbsmrth/Images-Paradise?style=for-the-badge)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+------------
 
-### Run your unit tests
-```
-npm run test:unit
-```
+### About
 
-### Lints and fixes files
-```
-npm run lint
-```
+If you are passionate about photography you probably already know the unsplash service, in this platform based on its api you will get recommendations as well as a way to search for an image that may inspire you.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> Photography is an austere and blazing poetry of the real. (Ansel Adams)
