@@ -2,7 +2,7 @@
   <header>
     <nav class="nav" :class="{'nav--dark':setBlack}">
       <button class="nav__icon-container" @click="toggle">
-        <i class="fa-solid fa-bars fa-lg nav__icon"></i>
+        <i class="fa-solid fa-bars fa-lg" :class="{'fa-xmark':openMenu}"></i>
       </button>
       <ul class="nav__items" :class="{'nav__items--active':openMenu}">
         <li class="nav__item">
@@ -169,10 +169,11 @@ export default defineComponent({
       display: block;
       background: none;
       border: none;
+      outline: none;
       margin-left: 4%;
     }
 
-    .nav .nav__icon-container .nav__icon {
+    .nav .nav__icon-container .fa-solid {
       color: #fff;
     }
 
