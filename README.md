@@ -19,3 +19,19 @@ If you are passionate about photography you probably already know the unsplash s
 Chek out right [here](https://images-paradise.vercel.app/).
 
 ![view](https://i.imgur.com/gD7Ney4.png)
+
+### ☆ Starting 
+
+```bash
+# Clone the repository
+$ git clone https://github.com/sbsmrth/Images-Paradise.git
+
+# Go into the repository
+$ cd Images-Paradise/
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm run serve
+```
