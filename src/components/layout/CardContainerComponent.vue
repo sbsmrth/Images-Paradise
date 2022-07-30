@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import CardComponent from '@/components/layout/CardComponent.vue';
 
-const props = defineProps({
+defineProps({
   images: {
     type: Array,
     required: true,

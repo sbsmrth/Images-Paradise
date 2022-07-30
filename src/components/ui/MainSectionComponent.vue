@@ -27,6 +27,7 @@
     width: 350px;
     color: var(--light);
     letter-spacing: 1px;
+    padding-left: 20px;
   }
   .main__info .main__title {
     font-size: 1.4em;
