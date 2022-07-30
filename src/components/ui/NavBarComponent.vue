@@ -1,3 +1,29 @@
+<script lang="ts" setup>
+import {
+  inject,
+  computed,
+  ref,
+  Ref,
+} from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const scroll = inject('scroll') as Ref<number>;
+const openMenu = ref(false);
+const query = ref('');
+
+const toggle = () => {
+  openMenu.value = !openMenu.value;
+};
+
+const send = () => {
+  store.dispatch('getQueryImages', query.value);
+  query.value = '';
+};
+
+const setBlack = computed(() => scroll.value > 70);
+</script>
+
 <template>
   <header>
     <nav class="nav" :class="{'nav--dark':setBlack}">
@@ -17,7 +43,7 @@
       </ul>
       <form class="nav__search" role="search">
         <label for="q">
-          <input type="text" id="q" class="nav__input" v-model="q" autocomplete="off"
+          <input type="text" id="q" class="nav__input" v-model="query" autocomplete="off"
           placeholder="Search an image..">
         </label>
         <router-link :to="{name:'search'}">
@@ -29,52 +55,6 @@
     </nav>
   </header>
 </template>
-
-<script>
-import { defineComponent } from 'vue';
-import { useStore } from 'vuex';
-
-export default defineComponent({
-  name: 'NavBarComponent',
-
-  created() {
-    this.store = useStore();
-    window.addEventListener('scroll', this.changeBg);
-  },
-
-  unmounted() {
-    window.removeEventListener('scroll', this.changeBg);
-  },
-
-  data: () => ({
-    store: null,
-    q: '',
-    scroll: 0,
-    openMenu: false,
-  }),
-
-  methods: {
-    toggle() {
-      this.openMenu = !this.openMenu;
-    },
-
-    changeBg() {
-      this.scroll = window.scrollY;
-    },
-
-    send() {
-      this.store.dispatch('getQueryImages', this.q);
-      this.q = '';
-    },
-  },
-
-  computed: {
-    setBlack() {
-      return this.scroll > 70;
-    },
-  },
-});
-</script>
 
 <style scoped>
   .nav {
@@ -88,25 +68,20 @@ export default defineComponent({
     padding: 30px 0;
     z-index: 1;
   }
-
   .nav--dark {
     background: rgb(4,4,4);
     transition: .3s;
   }
-
   .nav .nav__icon-container {
     display: none;
   }
-
   .nav .nav__items {
     display: flex;
     list-style: none;
   }
-
   .nav .nav__items .nav__item {
     margin: 0 14px;
   }
-
   .nav__items .nav__item .nav__link {
     color: var(--light);
     text-decoration: none;
@@ -114,7 +89,6 @@ export default defineComponent({
     letter-spacing: 2px;
     font-weight: bolder;
   }
-
   .nav .nav__search {
     position: absolute;
     right: 12px;
@@ -127,7 +101,6 @@ export default defineComponent({
     padding: 11px 8px;
     align-items: center;
   }
-
   .nav .nav__search .nav__input {
     border: none;
     outline: none;
@@ -136,23 +109,19 @@ export default defineComponent({
     transition: .3s;
     color: var(--light);
   }
-
   .nav .nav__search:hover .nav__input {
     width: 110px;
     margin-right: 9px;
     transition: .4s;
   }
-
   .nav .nav__search .nav__input::placeholder {
     color: #edeef0;
   }
-
   .nav .nav__search .nav__button {
     border: none;
     outline: none;
     background: none;
   }
-
   .nav__search .nav__button .nav__icon {
     cursor: pointer;
     color: var(--light);
@@ -164,7 +133,6 @@ export default defineComponent({
       background: var(--dark);
       height: 8vh;
     }
-
     .nav .nav__icon-container {
       display: block;
       background: none;
@@ -172,11 +140,9 @@ export default defineComponent({
       outline: none;
       margin-left: 4%;
     }
-
     .nav .nav__icon-container .fa-solid {
       color: #fff;
     }
-
     .nav .nav__items {
       flex-direction: column;
       justify-content: center;
@@ -187,21 +153,17 @@ export default defineComponent({
       height: calc(100% - 8vh);
       background: inherit;
     }
-
     .nav .nav__items .nav__item {
       margin: 12px 0;
     }
-
     .nav .nav__items--active {
       top: 8vh;
       transition: top .3s;
     }
-
     .nav .nav__search:hover .nav__input {
       width: 110px;
       padding-left: 2px;
     }
-
     .nav .nav__search {
       padding: 11px 13px;
     }
@@ -211,7 +173,6 @@ export default defineComponent({
       width: 160px;
       padding-left: 8px;
     }
-
     .nav .nav__search {
       right: 30px;
       height: 27px;

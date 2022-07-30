@@ -1,37 +1,19 @@
+<script lang="ts" setup>
+import { onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
+import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
+
+const store = useStore();
+
+onMounted(() => store.dispatch('getRandom'));
+
+const images = computed(() => store.state.images);
+</script>
+
 <template>
   <p class="text">Some random photos..</p>
   <CardContainerComponent :images="images"/>
 </template>
-
-<script>
-import { defineComponent, computed, onMounted } from 'vue';
-
-import { useStore } from 'vuex';
-
-import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
-
-export default defineComponent({
-  name: 'OtherComponent',
-
-  setup() {
-    const store = useStore();
-
-    onMounted(() => {
-      store.dispatch('getRandom');
-    });
-
-    const images = computed(() => store.state.images);
-
-    return {
-      images,
-    };
-  },
-
-  components: {
-    CardContainerComponent,
-  },
-});
-</script>
 
 <style scoped>
   .text {

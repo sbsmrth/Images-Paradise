@@ -1,3 +1,14 @@
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  img: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <article class="images__col">
     <img
@@ -24,7 +35,7 @@
       </div>
       <div class="images__ig" v-if="img.user.instagram_username">
         <i class="fa-brands fa-instagram"></i>
-        <p>{{img.user.instagram_username}}</p>
+        <p>{{ img.user.instagram_username }}</p>
       </div>
       <div class="images__download images__main">
         <i class="fa-solid fa-up-right-from-square fa-sm"></i>
@@ -34,21 +45,6 @@
   </article>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'CardComponent',
-
-  props: {
-    img: {
-      type: Object,
-      required: true,
-    },
-  },
-});
-</script>
-
 <style scoped>
   .images .images__col .images__img {
     width: 100%;
@@ -56,7 +52,6 @@ export default defineComponent({
     object-fit: cover;
     border-radius: 3px;
   }
-
   .images .images__col .images__content {
     display: flex;
     align-items: center;
@@ -65,21 +60,17 @@ export default defineComponent({
     margin-top: 7px;
     flex-wrap: wrap;
   }
-
   .images .images__col .images__content i {
     color: var(--light)
   }
-
   .images .images__col .images__content p, a {
     display: inline-block;
     margin-left: 8px;
     color: var(--light);
   }
-
   .images__content a {
     text-decoration: none;
   }
-
   .images__content .images__main {
     margin: 3px 8px;
   }

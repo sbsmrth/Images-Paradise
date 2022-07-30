@@ -1,29 +1,21 @@
-<template>
-  <section class="images" id="images">
-    <CardComponent v-for="(img, index) of images" :key="index" :img="img" data-test="card" />
-  </section>
-</template>
-
-<script>
-import { defineComponent } from 'vue';
-
+<script lang="ts" setup>
+import { defineProps } from 'vue';
 import CardComponent from '@/components/layout/CardComponent.vue';
 
-export default defineComponent({
-  name: 'CardContainerComponent',
-
-  props: {
-    images: {
-      type: Array,
-      required: true,
-    },
-  },
-
-  components: {
-    CardComponent,
+const props = defineProps({
+  images: {
+    type: Array,
+    required: true,
   },
 });
 </script>
+
+<template>
+  <section class="images" id="images">
+    <CardComponent v-for="(img, index) of images" :key="index" :img="(img as object)"
+    data-test="card" />
+  </section>
+</template>
 
 <style scoped>
   .images {
