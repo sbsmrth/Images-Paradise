@@ -16,7 +16,7 @@ If you are passionate about photography you probably already know the unsplash s
 
 ### ⮞ Demo
 
-Chek out right [here](https://images-paradise.vercel.app/).
+Check out right [here](https://images-paradise.vercel.app/).
 
 ![view](https://i.imgur.com/gD7Ney4.png)
 
