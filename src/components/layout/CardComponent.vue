@@ -1,25 +1,30 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 
-defineProps({
+const props = defineProps({
   img: {
     type: Object,
     required: true,
   },
 });
+
+const objectUsername = ref(props.img.user.username);
+const objectAlt = ref(props.img.alt_description);
+
+const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
 </script>
 
 <template>
   <article class="images__col">
     <img
       :src="img.urls.regular"
-      :alt="img.alt_description"
+      :alt="alt()"
       class="images__img"
     />
     <div class="images__content">
-      <div class="images__user images__main" v-if="img.user.username">
+      <div class="images__user images__main" v-if="objectUsername">
         <i class="fa-solid fa-user"></i>
-        <p>{{ img.user.username }}</p>
+        <p>{{ objectUsername }}</p>
       </div>
       <div class="images__icon images__main" v-if="img.likes">
         <i class="fa-solid fa-heart"></i>
