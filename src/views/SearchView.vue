@@ -5,7 +5,7 @@ import CardContainerComponent from '@/components/layout/CardContainerComponent.v
 
 const store = useStore();
 
-const imagesQ = computed(() => store.state.images);
+const imagesQ = computed(() => store.state.custom);
 </script>
 
 <template>

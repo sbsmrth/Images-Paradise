@@ -18,3 +18,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--primary);
 }
+
+::-webkit-scrollbar {
+  width: .5vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  height: 140px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}

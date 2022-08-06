@@ -3,10 +3,15 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     images: [],
+    custom: [],
   },
   mutations: {
     setImages(state, payload) {
       state.images = payload;
+    },
+
+    setCustom(state, payload) {
+      state.custom = payload;
     },
   },
   actions: {
@@ -31,7 +36,7 @@ export default createStore({
           },
         });
         const queryImages = await ans.json();
-        commit('setImages', queryImages.results);
+        commit('setCustom', queryImages.results);
       } catch (err) {
         console.log(err);
       }

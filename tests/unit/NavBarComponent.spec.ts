@@ -47,6 +47,6 @@ describe('NavBarComponent.vue', () => {
 
     expect(list.classes()).toHaveLength(2);
 
-    expect(list.classes()).toContain('nav__items');
+    expect(list.classes()).toContain('nav__items--active');
   });
 });
