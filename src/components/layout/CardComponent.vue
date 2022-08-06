@@ -15,34 +15,34 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
 </script>
 
 <template>
-  <article class="images__col">
+  <article class="images-col">
     <img
       :src="img.urls.regular"
       :alt="alt()"
-      class="images__img"
+      class="images-col__img"
     />
-    <div class="images__content">
-      <div class="images__user images__main" v-if="objectUsername">
+    <div class="images-col__content">
+      <div class="images-col__main" v-if="objectUsername">
         <i class="fa-solid fa-user"></i>
         <p>{{ objectUsername }}</p>
       </div>
-      <div class="images__icon images__main" v-if="img.likes">
+      <div class="images-col__main" v-if="img.likes">
         <i class="fa-solid fa-heart"></i>
         <p>{{ img.likes }}</p>
       </div>
-      <div class="images__tw images__main" v-if="img.user.twitter_username">
+      <div class="images-col__main" v-if="img.user.twitter_username">
         <i class="fa-brands fa-twitter"></i>
         <p>{{ img.user.twitter_username }}</p>
       </div>
-      <div class="images__portfolio images__main" v-if="img.user.portfolio_url">
+      <div class="images-col__main" v-if="img.user.portfolio_url">
         <i class="fa-solid fa-paper-plane fa-sm"></i>
         <a :href="img.user.portfolio_url" target="__blank">Portfolio</a>
       </div>
-      <div class="images__ig" v-if="img.user.instagram_username">
+      <div class="images-col__main" v-if="img.user.instagram_username">
         <i class="fa-brands fa-instagram"></i>
         <p>{{ img.user.instagram_username }}</p>
       </div>
-      <div class="images__download images__main">
+      <div class="images-col__main">
         <i class="fa-solid fa-up-right-from-square fa-sm"></i>
         <a :href="img.links.download" target="__blank">DL</a>
       </div>
@@ -50,33 +50,36 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
   </article>
 </template>
 
-<style scoped>
-  .images .images__col .images__img {
-    width: 100%;
-    height: 93%;
-    object-fit: cover;
-    border-radius: 3px;
-  }
-  .images .images__col .images__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 10px;
-    margin-top: 7px;
-    flex-wrap: wrap;
-  }
-  .images .images__col .images__content i {
-    color: var(--light)
-  }
-  .images .images__col .images__content p, a {
-    display: inline-block;
-    margin-left: 8px;
-    color: var(--light);
-  }
-  .images__content a {
-    text-decoration: none;
-  }
-  .images__content .images__main {
-    margin: 3px 8px;
+<style lang="scss" scoped>
+  .images-col {
+    &__img {
+      width: 100%;
+      height: 93%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 10px;
+      margin-top: 7px;
+      flex-wrap: wrap;
+    }
+
+    &__main {
+      margin: 3px 8px;
+
+      & i {
+        color: var(--light);
+      }
+
+      & p,a {
+        display: inline-block;
+        margin-left: 8px;
+        color: var(--light);
+      }
+    }
   }
 </style>

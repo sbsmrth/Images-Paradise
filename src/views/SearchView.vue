@@ -11,13 +11,18 @@ const imagesQ = computed(() => store.state.images);
 <template>
   <CardContainerComponent v-if="imagesQ.length != 0" :images="imagesQ" class="card"/>
   <div v-else class="error">
-    <img src="@/assets/404.png" alt="error 404 no result found" class="error__img">
+    <img src="@/assets/img/404.png" alt="error 404 no result found" class="error__img">
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .card {
     margin-top: 17vh;
+    @media (max-width: 768px) {
+      & {
+        margin-top: 10vh;
+      }
+    }
   }
   .error {
     width: 100%;
@@ -25,16 +30,11 @@ const imagesQ = computed(() => store.state.images);
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .error__img {
-    height: 400px;
-    width: 400px;
-    object-fit: cover;
-  }
 
-  @media (max-width: 768px) {
-    .card {
-      margin-top: 10vh;
+    &__img {
+      height: 400px;
+      width: 400px;
+      object-fit: cover;
     }
   }
 </style>

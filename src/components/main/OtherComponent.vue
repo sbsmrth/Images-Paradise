@@ -15,7 +15,7 @@ const images = computed(() => store.state.images);
   <CardContainerComponent :images="images"/>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .text {
     text-align: center;
     color: var(--light);

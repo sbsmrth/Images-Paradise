@@ -16,7 +16,7 @@ const popular = computed(() => store.state.images);
   <CardContainerComponent v-if="popular" :images="popular" class="card"/>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .card {
     margin-top: 17vh;
   }

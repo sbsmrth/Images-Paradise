@@ -17,7 +17,7 @@ defineProps({
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .images {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -25,19 +25,19 @@ defineProps({
     width: 95vw;
     margin: 50px auto;
     gap: 80px 30px;
-  }
 
-  @media (max-width: 768px) {
-    .images {
-      grid-template-columns: 1fr;
-      row-gap: 70px;
-      width: 93vw;
+    @media (max-width: 768px) {
+      & {
+        grid-template-columns: 1fr;
+        row-gap: 70px;
+        width: 93vw;
+      }
     }
-  }
 
-  @media (min-width: 992px) {
-    .images {
-      row-gap: 50px;
+    @media (min-width: 992px) {
+      & {
+        row-gap: 50px;
+      }
     }
   }
 </style>

@@ -26,25 +26,6 @@ provide('scroll', pageY);
   <router-view></router-view>
 </template>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-:root {
-  --dark: #121314;
-  --light: rgb(255,255,255);
-}
-
-body {
-  background: var(--dark);
-}
+<style lang="scss">
+  @import '@/styles.scss';
 </style>

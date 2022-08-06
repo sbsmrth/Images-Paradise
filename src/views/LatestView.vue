@@ -16,7 +16,7 @@ const last = computed(() => store.state.images);
   <CardContainerComponent v-if="last" :images="last" class="card"/>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .card {
     margin-top: 17vh;
   }
