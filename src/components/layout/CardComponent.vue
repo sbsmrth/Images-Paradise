@@ -20,27 +20,28 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
       :src="img.urls.regular"
       :alt="alt()"
       class="images-col__img"
+      id="img"
     />
     <div class="images-col__content">
       <div class="images-col__main" v-if="objectUsername">
         <i class="fa-solid fa-user"></i>
-        <p>{{ objectUsername }}</p>
+        <p id="user">{{ objectUsername }}</p>
       </div>
       <div class="images-col__main" v-if="img.likes">
         <i class="fa-solid fa-heart"></i>
-        <p>{{ img.likes }}</p>
+        <p id="likes">{{ img.likes }}</p>
       </div>
       <div class="images-col__main" v-if="img.user.twitter_username">
         <i class="fa-brands fa-twitter"></i>
-        <p>{{ img.user.twitter_username }}</p>
+        <p id="twitter">{{ img.user.twitter_username }}</p>
       </div>
-      <div class="images-col__main" v-if="img.user.portfolio_url">
+      <div class="images-col__main" id="portfolio" v-if="img.user.portfolio_url">
         <i class="fa-solid fa-paper-plane fa-sm"></i>
         <a :href="img.user.portfolio_url" target="__blank">Portfolio</a>
       </div>
       <div class="images-col__main" v-if="img.user.instagram_username">
         <i class="fa-brands fa-instagram"></i>
-        <p>{{ img.user.instagram_username }}</p>
+        <p id="ig">{{ img.user.instagram_username }}</p>
       </div>
       <div class="images-col__main">
         <i class="fa-solid fa-up-right-from-square fa-sm"></i>

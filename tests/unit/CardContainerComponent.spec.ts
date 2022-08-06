@@ -2,7 +2,7 @@ import CardContainerComponent from '@/components/layout/CardContainerComponent.v
 import { mount } from '@vue/test-utils';
 import { images } from './ImgMock';
 
-describe.skip('CardContainerComponent.vue', () => {
+describe('CardContainerComponent.vue', () => {
 
   it('should render all cards', () => {
 
