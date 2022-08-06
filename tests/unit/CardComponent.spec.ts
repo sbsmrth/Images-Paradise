@@ -12,7 +12,7 @@ describe('CardComponent.vue', () => {
     wrapper = shallowMount(CardComponent, {
       props: {
         img,
-      }
+      },
     });
   });
 
@@ -62,7 +62,7 @@ describe('CardComponent.vue', () => {
   it('should construct alt description', () => {
 
     const image = wrapper.get('#img');
-    const alt = `${img.user.username}, photo`
+    const alt = `${img.user.username}, photo`;
 
     expect(image.attributes().alt).toBe(alt);
   });

@@ -26,11 +26,11 @@ const setBlack = computed(() => scroll.value > 70);
 
 <template>
   <header>
-    <nav class="nav" :class="{'nav--dark':setBlack}">
-      <button class="nav__icon-container" @click="toggle">
-        <i class="fa-solid fa-bars fa-lg" :class="{'fa-xmark':openMenu}"></i>
+    <nav class="nav" data-test="nav" :class="{'nav--dark':setBlack}">
+      <button class="nav__icon-container" data-test="btn-menu" @click="toggle">
+        <i class="fa-solid fa-bars fa-lg" data-test="fa-menu" :class="{'fa-xmark':openMenu}"></i>
       </button>
-      <ul class="nav__items" :class="{'nav__items--active':openMenu}">
+      <ul class="nav__items" data-test="items-list" :class="{'nav__items--active':openMenu}">
         <li class="nav__item">
           <router-link to="/" class="nav__link">Home</router-link>
         </li>
