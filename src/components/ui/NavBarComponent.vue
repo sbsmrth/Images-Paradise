@@ -46,11 +46,14 @@ const setBlack = computed(() => scroll.value > 70);
           <input type="text" id="q" class="nav__input" v-model="query" autocomplete="off"
           placeholder="Search an image..">
         </label>
-        <router-link :to="{name:'search'}">
+        <router-link :to="{name:'search'}" v-if="query">
           <button class="nav__button" @click="send">
-            <i class="fa-solid fa-magnifying-glass nav__icon"></i>
+            <i class="fa-solid fa-magnifying-glass nav__icon nav__icon--active"></i>
           </button>
         </router-link>
+        <div v-else>
+          <i class="fa-solid fa-magnifying-glass nav__icon"></i>
+        </div>
       </form>
     </nav>
   </header>
@@ -129,8 +132,12 @@ const setBlack = computed(() => scroll.value > 70);
     }
 
     &__icon {
-      cursor: pointer;
       color: var(--light);
+      cursor: not-allowed;
+
+      &--active {
+        cursor: pointer;
+      }
     }
 
     @media (max-width: 768px) {
