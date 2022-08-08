@@ -91,7 +91,7 @@ const setBlack = computed(() => scroll.value > 70);
     &__link {
       color: var(--light);
       font-size: 1.4em;
-      letter-spacing: var(--letter-spacing-min);
+      letter-spacing: var(--letter-spacing-mid);
       font-weight: bolder;
     }
 

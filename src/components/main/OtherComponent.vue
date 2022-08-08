@@ -21,7 +21,7 @@ const images = computed(() => store.state.images);
     color: var(--light);
     margin-top: 50px;
     font-size: 1.3em;
-    letter-spacing: 1px;
+    letter-spacing: var(--letter-spacing-min);
     font-weight: bold;
   }
 </style>

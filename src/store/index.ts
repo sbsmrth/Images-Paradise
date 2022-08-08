@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
 
+import { apiKey, apiBase, apiSearch } from '@/api/api';
+
 export default createStore({
   state: {
     images: [],
@@ -17,9 +19,9 @@ export default createStore({
   actions: {
     async getRandom({ commit }) {
       try {
-        const ans = await fetch('https://api.unsplash.com/photos/random?count=30', {
+        const ans = await fetch(`${apiBase}/random?count=30`, {
           headers: {
-            Authorization: 'Client-ID bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY',
+            Authorization: `Client-ID ${apiKey}`,
           },
         });
         const images = await ans.json();
@@ -30,9 +32,9 @@ export default createStore({
     },
     async getQueryImages({ commit }, q) {
       try {
-        const ans = await fetch(`https://api.unsplash.com/search/photos?per_page=30&query=${q}`, {
+        const ans = await fetch(`${apiSearch}?per_page=30&query=${q}`, {
           headers: {
-            Authorization: 'Client-ID bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY',
+            Authorization: `Client-ID ${apiKey}`,
           },
         });
         const queryImages = await ans.json();
@@ -43,9 +45,9 @@ export default createStore({
     },
     async getImages({ commit }, order) {
       try {
-        const ans = await fetch(`https://api.unsplash.com/photos?per_page=30&order_by=${order}`, {
+        const ans = await fetch(`${apiBase}?per_page=30&order_by=${order}`, {
           headers: {
-            Authorization: 'Client-ID bC8QHaIPliNsXg0dVauxEEQ_zjj6j_CF5jBdm5KESlY',
+            Authorization: `Client-ID ${apiKey}`,
           },
         });
         const imgs = await ans.json();

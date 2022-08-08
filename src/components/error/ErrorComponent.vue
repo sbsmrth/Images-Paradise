@@ -39,7 +39,7 @@
       color: #cfcecd;
       margin-top: 23px;
       font-size: 1.2em;
-      letter-spacing: 1px;
+      letter-spacing: var(--letter-spacing-min);
     }
 
     &__title {

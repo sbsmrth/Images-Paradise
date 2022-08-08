@@ -26,7 +26,7 @@
     &__info {
       width: 350px;
       color: var(--light);
-      letter-spacing: 1px;
+      letter-spacing: var(--letter-spacing-min);
       padding-left: 20px;
     }
 
