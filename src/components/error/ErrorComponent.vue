@@ -1,13 +1,15 @@
 <template>
   <div class="error">
-    <div class="error__content">
-      <div class="error__img"></div>
-      <h2 class="error__title">No matching views</h2>
-      <p class="error__body">
-        There weren't any saved views, recent queries,
-        our sources matching your search.
-      </p>
-    </div>
+    <Transition appear enter-active-class="animate__bounceInLeft">
+      <div class="error__content animate__animated">
+        <div class="error__img"></div>
+        <h2 class="error__title">No matching views</h2>
+        <p class="error__body">
+          There weren't any saved views, recent queries,
+          our sources matching your search.
+        </p>
+      </div>
+    </Transition>
   </div>
 </template>
 

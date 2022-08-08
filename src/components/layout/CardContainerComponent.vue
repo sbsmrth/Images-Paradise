@@ -11,10 +11,12 @@ defineProps({
 </script>
 
 <template>
-  <section class="images" id="images">
-    <CardComponent v-for="(img, index) of images" :key="index" :img="(img as object)"
-    data-test="card" />
-  </section>
+  <Transition appear enter-active-class="animate__fadeIn">
+    <section class="images animate__animated" id="images">
+      <CardComponent v-for="(img, index) of images" :key="index"
+      :img="(img as object) " data-test="card" />
+    </section>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>

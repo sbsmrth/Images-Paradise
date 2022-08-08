@@ -8,7 +8,9 @@
         </i>
       </p>
       <blockquote class="main-img__quote">
-        <i>Not only a feeling.</i>
+        <Transition appear enter-active-class="animate__flash">
+          <i class="animate__animated">Not only a feeling.</i>
+        </Transition>
       </blockquote>
     </article>
   </section>
