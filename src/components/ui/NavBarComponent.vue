@@ -32,13 +32,19 @@ const setBlack = computed(() => scroll.value > 70);
       </button>
       <ul class="nav__items" data-test="items-list" :class="{'nav__items--active':openMenu}">
         <li class="nav__item">
-          <router-link to="/" class="nav__link">Home</router-link>
+          <router-link to="/" class="nav__link" @click="toggle">
+            Home
+          </router-link>
         </li>
         <li class="nav__item">
-          <router-link :to="{name:'popular'}" class="nav__link">Popular</router-link>
+          <router-link :to="{name:'popular'}" @click="toggle" class="nav__link">
+            Popular
+          </router-link>
         </li>
         <li class="nav__item">
-          <router-link :to="{name:'latest'}" class="nav__link">Latest</router-link>
+          <router-link :to="{name:'latest'}" @click="toggle" class="nav__link">
+            Latest
+          </router-link>
         </li>
       </ul>
       <form class="nav__search" role="search">
@@ -82,6 +88,7 @@ const setBlack = computed(() => scroll.value > 70);
 
     &__items {
       display: flex;
+      transition: .1s;
     }
 
     &__item {
