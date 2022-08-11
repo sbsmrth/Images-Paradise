@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import BaseComponent from '@/components/BaseComponent.vue';
 import HomeView from '../views/HomeView.vue';
 
 const routes: Array<RouteRecordRaw> = [
@@ -8,19 +9,25 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: '/search/:query',
-    name: 'search',
-    component: () => import(/* webpackChunkName: "search" */ '@/views/SearchView.vue'),
-  },
-  {
-    path: '/popular',
-    name: 'popular',
-    component: () => import(/* webpackChunkName: "popular" */ '@/views/PopularView.vue'),
-  },
-  {
-    path: '/latest',
-    name: 'latest',
-    component: () => import(/* webpackChunkName: "latest" */ '@/views/LatestView.vue'),
+    path: '/images',
+    component: BaseComponent,
+    children: [
+      {
+        path: 'search/:query',
+        name: 'search',
+        component: () => import(/* webpackChunkName: "search" */ '@/views/SearchView.vue'),
+      },
+      {
+        path: 'popular',
+        name: 'popular',
+        component: () => import(/* webpackChunkName: "popular" */ '@/views/PopularView.vue'),
+      },
+      {
+        path: 'latest',
+        name: 'latest',
+        component: () => import(/* webpackChunkName: "latest" */ '@/views/LatestView.vue'),
+      },
+    ],
   },
 ];
 
