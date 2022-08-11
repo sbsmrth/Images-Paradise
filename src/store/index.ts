@@ -30,9 +30,9 @@ export default createStore({
         console.log(err);
       }
     },
-    async getQueryImages({ commit }, q) {
+    async getQueryImages({ commit }, params) {
       try {
-        const ans = await fetch(`${apiSearch}?per_page=30&query=${q}`, {
+        const ans = await fetch(`${apiSearch}?per_page=30&query=${params.q}&page=${params.page}`, {
           headers: {
             Authorization: `Client-ID ${apiKey}`,
           },
@@ -43,9 +43,9 @@ export default createStore({
         console.log(err);
       }
     },
-    async getImages({ commit }, order) {
+    async getImages({ commit }, params) {
       try {
-        const ans = await fetch(`${apiBase}?per_page=30&order_by=${order}`, {
+        const ans = await fetch(`${apiBase}?per_page=30&order_by=${params.order}&page=${params.page}`, {
           headers: {
             Authorization: `Client-ID ${apiKey}`,
           },

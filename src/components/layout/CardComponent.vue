@@ -67,6 +67,10 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
       padding: 0 10px;
       margin-top: 7px;
       flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        padding: 0;
+      }
     }
 
     &__main {
@@ -80,6 +84,10 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
         display: inline-block;
         margin-left: 8px;
         color: var(--light);
+
+        @media (min-width: 1400px) {
+          font-size: 1.1em;
+        }
       }
     }
   }

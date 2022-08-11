@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: '/search',
+    path: '/search/:query',
     name: 'search',
     component: () => import(/* webpackChunkName: "search" */ '@/views/SearchView.vue'),
   },

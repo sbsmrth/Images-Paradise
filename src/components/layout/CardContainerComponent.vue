@@ -22,24 +22,29 @@ defineProps({
 <style lang="scss" scoped>
   .images {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    column-gap: 30px;
+    row-gap: 65px;
+    width: 93vw;
     grid-auto-rows: 400px;
-    width: 95vw;
     margin: 50px auto;
-    gap: 80px 30px;
 
-    @media (max-width: 768px) {
-      & {
-        grid-template-columns: 1fr;
-        row-gap: 70px;
-        width: 93vw;
-      }
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      width: 94vw;
+      row-gap: 60px;
     }
 
     @media (min-width: 992px) {
-      & {
-        row-gap: 50px;
-      }
+      row-gap: 50px;
+      width: 95vw;
+      grid-auto-rows: 420px;
+    }
+
+    @media (min-width: 1400px) {
+      row-gap: 45px;
+      grid-auto-rows: 500px;
+      width: 96vw;
     }
   }
 </style>

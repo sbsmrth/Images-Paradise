@@ -5,9 +5,7 @@ import {
   ref,
   Ref,
 } from 'vue';
-import { useStore } from 'vuex';
 
-const store = useStore();
 const scroll = inject('scroll') as Ref<number>;
 const openMenu = ref(false);
 const query = ref('');
@@ -16,8 +14,7 @@ const toggle = () => {
   openMenu.value = !openMenu.value;
 };
 
-const send = () => {
-  store.dispatch('getQueryImages', query.value);
+const clear = () => {
   query.value = '';
 };
 
@@ -52,8 +49,8 @@ const setBlack = computed(() => scroll.value > 70);
           <input type="text" id="q" class="nav__input" v-model="query" autocomplete="off"
           placeholder="Search an image..">
         </label>
-        <router-link :to="{name:'search'}" v-if="query">
-          <button class="nav__button" @click="send">
+        <router-link :to="{name:'search', params: {query}}" v-if="query">
+          <button class="nav__button" @click="clear">
             <i class="fa-solid fa-magnifying-glass nav__icon nav__icon--active"></i>
           </button>
         </router-link>
@@ -206,6 +203,9 @@ const setBlack = computed(() => scroll.value > 70);
         height: 27px;
         padding: 14px 10px;
       }
+    }
+    @media (min-width: 1400px) {
+      height: 9vh;
     }
   }
 </style>
