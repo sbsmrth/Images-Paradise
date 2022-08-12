@@ -32,8 +32,10 @@ const popular = computed(() => store.state.images);
 </script>
 
 <template>
-  <CardContainerComponent v-if="popular" :images="popular" class="card"/>
-  <PaginationComponent @modified="updateValue"></PaginationComponent>
+  <div v-if="popular.length != 0">
+    <CardContainerComponent v-if="popular" :images="popular" class="card"/>
+    <PaginationComponent @modified="updateValue"></PaginationComponent>
+  </div>
 </template>
 
 <style lang="scss" scoped>

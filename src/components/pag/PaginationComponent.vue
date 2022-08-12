@@ -24,7 +24,7 @@ watch(page, (newValue) => {
     @click="decrement">&laquo;</a>
     <a href="#" class="navigation__item navigation__item--disabled" v-else>&laquo;</a>
     <a href="#" class="navigation__item navigation__item--active">{{ page }}</a>
-    <a href="#" v-if="page != 9" class="navigation__item navigation__control"
+    <a href="#" v-if="page != 9" data-test="inc" class="navigation__item navigation__control"
     @click="increment">&raquo;</a>
     <a href="#" class="navigation__item navigation__item--disabled" v-else>&raquo;</a>
   </nav>

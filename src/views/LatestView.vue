@@ -28,8 +28,10 @@ const last = computed(() => store.state.images);
 </script>
 
 <template>
-  <CardContainerComponent v-if="last" :images="last" class="card"/>
-  <PaginationComponent @modified="updateValue"></PaginationComponent>
+  <div v-if="last.length != 0">
+    <CardContainerComponent :images="last" class="card"/>
+    <PaginationComponent @modified="updateValue"></PaginationComponent>
+  </div>
 </template>
 
 <style lang="scss" scoped>
