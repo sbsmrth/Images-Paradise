@@ -9,6 +9,7 @@ const props = defineProps({
 });
 
 const objectUsername = ref(props.img.user.username);
+
 const objectAlt = ref(props.img.alt_description);
 
 const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;

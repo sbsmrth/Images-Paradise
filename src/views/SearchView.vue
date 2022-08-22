@@ -29,7 +29,6 @@ const updateValue = (value:number) => {
   page.value = value;
   getImages();
 };
-
 </script>
 
 <template>

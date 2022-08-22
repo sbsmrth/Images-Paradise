@@ -7,7 +7,9 @@ import {
 } from 'vue';
 
 const scroll = inject('scroll') as Ref<number>;
+
 const openMenu = ref(false);
+
 const query = ref('');
 
 const toggle = () => {
