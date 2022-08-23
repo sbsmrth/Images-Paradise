@@ -45,7 +45,7 @@ const alt = () => `${objectUsername.value}, ${objectAlt.value || 'photo'}`;
         <p id="ig">{{ img.user.instagram_username }}</p>
       </div>
       <div class="images-col__main">
-        <i class="fa-solid fa-up-right-from-square fa-sm"></i>
+        <i class="fa-solid fa-angle-down"></i>
         <a :href="img.links.download" target="__blank">DL</a>
       </div>
     </div>

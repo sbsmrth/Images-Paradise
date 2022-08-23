@@ -27,7 +27,7 @@ export default createStore({
         const images = await ans.json();
         commit('setImages', images);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
     async getQueryImages({ commit }, params) {
@@ -40,7 +40,7 @@ export default createStore({
         const queryImages = await ans.json();
         commit('setCustom', queryImages.results);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
     async getImages({ commit }, params) {
@@ -53,7 +53,7 @@ export default createStore({
         const imgs = await ans.json();
         commit('setImages', imgs);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
   },
