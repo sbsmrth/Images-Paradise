@@ -17,14 +17,10 @@
 </template>
 
 <style lang="scss" scoped>
+  @use '@/styles/02.tools/main-container';
   .main-img {
+    @include main-container.box;
     background: url('@/assets/img/main_background.jpg') center left 41% fixed no-repeat;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     &__info {
       width: 350px;
       color: var(--light);

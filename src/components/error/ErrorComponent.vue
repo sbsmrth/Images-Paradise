@@ -14,13 +14,9 @@
 </template>
 
 <style lang="scss" scoped>
+  @use '@/styles/02.tools/main-container';
   .error {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    @include main-container.box;
     &__content {
       text-align: center;
     }
