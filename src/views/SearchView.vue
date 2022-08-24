@@ -40,12 +40,8 @@ const updateValue = (value:number) => {
 </template>
 
 <style lang="scss" scoped>
+  @use '@/styles/02.tools/section';
   .card {
-    margin-top: 17vh;
-    @media (max-width: 768px) {
-      & {
-        margin-top: 10vh;
-      }
-    }
+    @include section.view;
   }
 </style>

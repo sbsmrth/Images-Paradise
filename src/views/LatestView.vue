@@ -35,7 +35,8 @@ const last = computed(() => store.state.images);
 </template>
 
 <style lang="scss" scoped>
+  @use '@/styles/02.tools/section';
   .card {
-    margin-top: 17vh;
+    @include section.view;
   }
 </style>
