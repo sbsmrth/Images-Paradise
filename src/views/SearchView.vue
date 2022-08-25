@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue';
+import {
+  computed,
+  onMounted,
+  ref,
+  watchEffect,
+} from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
@@ -12,14 +17,21 @@ const route = useRoute();
 
 const imagesQ = computed(() => store.state.custom);
 
+const q = ref(route.params.query);
+
 const page = ref(1);
 
 const getImages = () => {
   store.dispatch('getQueryImages', {
-    q: route.params.query,
+    q: q.value,
     page: page.value,
   });
 };
+
+watchEffect(() => {
+  q.value = route.params.query;
+  getImages();
+});
 
 onMounted(() => {
   getImages();

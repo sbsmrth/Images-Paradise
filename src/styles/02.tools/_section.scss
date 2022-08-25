@@ -1,8 +1,8 @@
 @mixin view {
   margin-top: 17vh;
-    @media (max-width: 768px) {
-      & {
-        margin-top: 10vh;
-      }
+  @media (max-width: 768px) {
+    & {
+     margin-top: 10vh;
     }
+  }
 }
