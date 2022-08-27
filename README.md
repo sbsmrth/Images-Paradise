@@ -36,9 +36,5 @@ $ npm install
 $ npm run serve
 ```
 
-### Contributing
-
-if you want to contribute to image-paradise read the wiki
-
 
 
