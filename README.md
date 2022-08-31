@@ -28,6 +28,12 @@ $ git clone https://github.com/sbsmrth/Images-Paradise.git
 
 # Go into the repository
 $ cd Images-Paradise/
+
+# Install dependencies
+$ npm i
+
+# Run the app
+$ npm run serve
 ```
 
 ### ✓ Testing
