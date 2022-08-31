@@ -2,7 +2,6 @@
 import {
   onMounted,
   computed,
-  ref,
 } from 'vue';
 import { useStore } from 'vuex';
 import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
@@ -10,12 +9,10 @@ import PaginationComponent from '@/components/pag/PaginationComponent.vue';
 
 const store = useStore();
 
-const page = ref(1);
-
-const getImages = () => {
+const getImages = (page = 1) => {
   store.dispatch('getImages', {
     order: 'popular',
-    page: page.value,
+    page,
   });
 };
 
@@ -23,9 +20,8 @@ onMounted(() => {
   getImages();
 });
 
-const updateValue = (value:number) => {
-  page.value = value;
-  getImages();
+const updateValue = (value: number) => {
+  getImages(value);
 };
 
 const popular = computed(() => store.state.images);

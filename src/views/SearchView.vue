@@ -19,12 +19,10 @@ const imagesQ = computed(() => store.state.custom);
 
 const q = ref(route.params.query);
 
-const page = ref(1);
-
-const getImages = () => {
+const getImages = (page = 1) => {
   store.dispatch('getQueryImages', {
     q: q.value,
-    page: page.value,
+    page,
   });
 };
 
@@ -37,9 +35,8 @@ onMounted(() => {
   getImages();
 });
 
-const updateValue = (value:number) => {
-  page.value = value;
-  getImages();
+const updateValue = (value: number) => {
+  getImages(value);
 };
 </script>
 

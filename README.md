@@ -4,7 +4,7 @@
   <img src="https://i.imgur.com/FRd8oNj.png" alt="saturn icon">
 </p>
 
-![last-commit](https://img.shields.io/github/last-commit/sbsmrth/Images-Paradise?style=for-the-badge) ![vuex](https://img.shields.io/github/package-json/dependency-version/sbsmrth/Images-Paradise/vuex?style=for-the-badge) ![tech](https://img.shields.io/badge/MADE_WITH-VUE-success?style=for-the-badge) ![lang](https://img.shields.io/github/languages/count/sbsmrth/Images-Paradise?style=for-the-badge) ![router](https://img.shields.io/github/package-json/dependency-version/sbsmrth/Images-Paradise/vue-router?color=SUCCESS&style=for-the-badge)
+![last-commit](https://img.shields.io/github/last-commit/sbsmrth/Images-Paradise?style=for-the-badge) ![vuex](https://img.shields.io/github/package-json/dependency-version/sbsmrth/Images-Paradise/vuex?style=for-the-badge) ![tech](https://img.shields.io/badge/MADE_WITH-VUE-success?style=for-the-badge) ![lang](https://img.shields.io/github/languages/count/sbsmrth/Images-Paradise?style=for-the-badge) ![router](https://img.shields.io/github/package-json/dependency-version/sbsmrth/Images-Paradise/vue-router?color=SUCCESS&style=for-the-badge) ![license](https://img.shields.io/github/license/sbsmrth/Images-Paradise?color=blue&style=for-the-badge)
 
 ------------
 
@@ -28,10 +28,11 @@ $ git clone https://github.com/sbsmrth/Images-Paradise.git
 
 # Go into the repository
 $ cd Images-Paradise/
+```
 
-# Install dependencies
-$ npm install
+### ✓ Testing
 
-# Run the app
-$ npm run serve
+```bash
+# Run tests
+$ npm run test:unit
 ```
