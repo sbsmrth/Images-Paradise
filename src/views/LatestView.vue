@@ -1,32 +1,33 @@
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue';
-import { useStore } from 'vuex';
+import { onBeforeMount, ref } from 'vue';
 import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
 import PaginationComponent from '@/components/pag/PaginationComponent.vue';
+import { apiBase, apiKey } from '@/api/api';
 
-const store = useStore();
+const latestImages = ref([]);
 
-const getImages = (page = 1) => {
-  store.dispatch('getImages', {
-    order: 'latest',
-    page,
-  });
+const getLatest = async (page = 1) => {
+  try {
+    const ans = await fetch(`${apiBase}?per_page=30&order_by=latest&page=${page}`, {
+      headers: {
+        Authorization: `Client-ID ${apiKey}`,
+      },
+    });
+    const images = await ans.json();
+    latestImages.value = images;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-onMounted(() => {
-  getImages();
-});
+onBeforeMount(() => getLatest());
 
-const updateValue = (value: number) => {
-  getImages(value);
-};
-
-const last = computed(() => store.state.images);
+const updateValue = (value: number) => getLatest(value);
 </script>
 
 <template>
-  <div v-if="last.length != 0">
-    <CardContainerComponent :images="last" class="card"/>
+  <div v-if="latestImages.length != 0">
+    <CardContainerComponent :images="latestImages" class="card"/>
     <PaginationComponent @modified="updateValue"></PaginationComponent>
   </div>
 </template>

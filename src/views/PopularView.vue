@@ -1,42 +1,40 @@
 <script lang="ts" setup>
-import {
-  onMounted,
-  computed,
-} from 'vue';
-import { useStore } from 'vuex';
+import { onBeforeMount, ref } from 'vue';
 import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
 import PaginationComponent from '@/components/pag/PaginationComponent.vue';
+import { apiBase, apiKey } from '@/api/api';
 
-const store = useStore();
+const popularImages = ref([]);
 
-const getImages = (page = 1) => {
-  store.dispatch('getImages', {
-    order: 'popular',
-    page,
-  });
+const getPopular = async (page = 1) => {
+  try {
+    const ans = await fetch(`${apiBase}?per_page=30&order_by=popular&page=${page}`, {
+      headers: {
+        Authorization: `Client-ID ${apiKey}`,
+      },
+    });
+    const images = await ans.json();
+    popularImages.value = images;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-onMounted(() => {
-  getImages();
-});
+onBeforeMount(() => getPopular());
 
-const updateValue = (value: number) => {
-  getImages(value);
-};
-
-const popular = computed(() => store.state.images);
+const updateValue = (value: number) => getPopular(value);
 </script>
 
 <template>
-  <div v-if="popular.length != 0">
-    <CardContainerComponent v-if="popular" :images="popular" class="card"/>
+  <div v-if="popularImages.length != 0">
+    <CardContainerComponent :images="popularImages" class="card" />
     <PaginationComponent @modified="updateValue"></PaginationComponent>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  @use '@/styles/02.tools/section';
-  .card {
-    @include section.view;
-  }
+@use "@/styles/02.tools/section";
+.card {
+  @include section.view;
+}
 </style>

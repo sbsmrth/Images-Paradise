@@ -1,5 +1,4 @@
 import NavBarComponent from '@/components/ui/NavBarComponent.vue';
-import store from '@/store';
 import { shallowMount, VueWrapper, RouterLinkStub } from '@vue/test-utils';
 
 describe('NavBarComponent.vue', () => {
@@ -11,7 +10,6 @@ describe('NavBarComponent.vue', () => {
       global: {
         provide: {
           'scroll': 75,
-          store: store,
         },
         stubs: {
           'router-link': RouterLinkStub,

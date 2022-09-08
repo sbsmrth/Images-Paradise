@@ -1,56 +1,61 @@
 <script lang="ts" setup>
-import {
-  computed,
-  onMounted,
-  ref,
-  watchEffect,
-} from 'vue';
-import { useStore } from 'vuex';
+import { ref, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
+import { apiSearch, apiKey } from '@/api/api';
 import CardContainerComponent from '@/components/layout/CardContainerComponent.vue';
 import ErrorComponent from '@/components/error/ErrorComponent.vue';
 import PaginationComponent from '@/components/pag/PaginationComponent.vue';
 
-const store = useStore();
-
 const route = useRoute();
 
-const imagesQ = computed(() => store.state.custom);
+const queryImages = ref([]);
 
-const q = ref(route.params.query);
-
-const getImages = (page = 1) => {
-  store.dispatch('getQueryImages', {
-    q: q.value,
-    page,
-  });
+const getQueryImages = async (params: { q: string, page?: number }) => {
+  const { q, page = 1 } = params;
+  try {
+    const ans = await fetch(`${apiSearch}?per_page=30&query=${q}&page=${page}`, {
+      headers: {
+        Authorization: `Client-ID ${apiKey}`,
+      },
+    });
+    const images = await ans.json();
+    queryImages.value = images.results;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-watchEffect(() => {
-  q.value = route.params.query;
-  getImages();
+watch(() => route.params.query, (newValue, last) => {
+  getQueryImages({
+    q: newValue as string,
+  });
 });
 
-onMounted(() => {
-  getImages();
+onBeforeMount(() => {
+  getQueryImages({
+    q: route.params.query as string,
+  });
 });
 
-const updateValue = (value: number) => {
-  getImages(value);
+const updateValue = (page: number) => {
+  getQueryImages({
+    q: route.params.query as string,
+    page,
+  });
 };
 </script>
 
 <template>
-  <div v-if="imagesQ.length != 0">
-    <CardContainerComponent :images="imagesQ" class="card"/>
+  <div v-if="queryImages.length != 0">
+    <CardContainerComponent :images="queryImages" class="card" />
     <PaginationComponent @modified="updateValue"></PaginationComponent>
   </div>
   <ErrorComponent v-else></ErrorComponent>
 </template>
 
 <style lang="scss" scoped>
-  @use '@/styles/02.tools/section';
-  .card {
-    @include section.view;
-  }
+@use "@/styles/02.tools/section";
+.card {
+  @include section.view;
+}
 </style>
